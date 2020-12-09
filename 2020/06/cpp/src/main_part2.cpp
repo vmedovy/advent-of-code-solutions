@@ -30,10 +30,10 @@ int main() {
             common_answers.insert(current_line.cbegin(), current_line.cend());
             first_answer = false;
         } else {
-            std::set<char> next_answers(current_line.begin(), current_line.end());
+            std::set<char> next_answers(current_line.cbegin(), current_line.cend());
             std::set<char> intersection;
-            std::set_intersection(common_answers.begin(), common_answers.end(),
-                                  next_answers.begin(), next_answers.end(),
+            std::set_intersection(common_answers.cbegin(), common_answers.cend(),
+                                  next_answers.cbegin(), next_answers.cend(),
                                   std::inserter(intersection, intersection.begin()));
             common_answers = intersection;
         }

@@ -24,9 +24,7 @@ int main() {
             finalize_group();
             continue;
         }
-        for (auto const c : current_line) {
-            unique_answers.insert(c);
-        }
+        unique_answers.insert(current_line.cbegin(), current_line.cend());
     }
     finalize_group();
 
