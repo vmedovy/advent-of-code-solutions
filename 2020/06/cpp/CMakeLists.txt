@@ -7,3 +7,4 @@ project(advent-of-code_${PUZZLE_YEAR}-${PUZZLE_DAY})
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}_part1 src/main_part1.cpp)
+add_executable(${PROJECT_NAME}_part2 src/main_part2.cpp)
