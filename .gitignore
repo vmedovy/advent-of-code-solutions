@@ -4,3 +4,6 @@ cmake-build-*/
 
 # Python
 venv/
+
+# Rust
+target/
