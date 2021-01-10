@@ -10,15 +10,15 @@ fn print_banner(msg: &str) {
     println!("+{}+", "-".repeat(sep_length));
 }
 
-fn count_if(vec: &Vec<i32>, val: i32) -> usize {
+fn count_if(vec: &[i32], val: i32) -> usize {
     vec.iter().filter(|x| **x == val).count()
 }
 
-fn calculate_joltage_differences(jolt_ratings_input: &Vec<i32>) -> Vec<i32> {
+fn calculate_joltage_differences(jolt_ratings_input: &[i32]) -> Vec<i32> {
     let mut full_jolt_ratings = jolt_ratings_input.to_vec();
     full_jolt_ratings.push(0); // charging outlet
     full_jolt_ratings.push(full_jolt_ratings.iter().max().unwrap() + 3); // built-in joltage adapter
-    full_jolt_ratings.sort();
+    full_jolt_ratings.sort_unstable();
 
     full_jolt_ratings
         .windows(2)
@@ -26,13 +26,13 @@ fn calculate_joltage_differences(jolt_ratings_input: &Vec<i32>) -> Vec<i32> {
         .collect::<Vec<_>>()
 }
 
-fn solve_part1(jolt_ratings_input: &Vec<i32>) -> (usize, usize) {
+fn solve_part1(jolt_ratings_input: &[i32]) -> (usize, usize) {
     let jolt_diffs = calculate_joltage_differences(jolt_ratings_input);
 
     (count_if(&jolt_diffs, 1), count_if(&jolt_diffs, 3))
 }
 
-fn solve_part2(jolt_ratings_input: &Vec<i32>) -> usize {
+fn solve_part2(jolt_ratings_input: &[i32]) -> usize {
     let joltage_differences = calculate_joltage_differences(jolt_ratings_input);
     let joltage_difference_sequence_lengths = joltage_differences
         .split(|val| *val == 3)
